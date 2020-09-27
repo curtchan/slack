@@ -70,6 +70,13 @@ class Message {
    */
   protected $attachments = [];
 
+    /**
+     * Blocks array
+     *
+     * @var array
+     */
+  protected $blocks = [];
+
   /**
    *
    * @var string
@@ -409,5 +416,23 @@ class Message {
 
     $this->client->sendMessage($this);
   }
+
+    /**
+     * @return array
+     */
+    public function getBlocks()
+    {
+        return $this->blocks;
+    }
+
+    /**
+     * @param array $blocks
+     * @return Message
+     */
+    public function setBlocks($blocks)
+    {
+        $this->blocks = $blocks;
+        return $this;
+    }
 
 }

@@ -372,12 +372,16 @@ class Client {
       'link_names' => $this->getLinkNames() ? 1 : 0,
       'unfurl_links' => $this->getUnfurlLinks(),
       'unfurl_media' => $this->getUnfurlMedia(),
-      'mrkdwn' => $message->getAllowMarkdown()
+      'mrkdwn' => $message->getAllowMarkdown(),
     ];
 
     if ($icon = $message->getIcon())
     {
       $payload[$message->getIconType()] = $icon;
+    }
+
+    if ($blocks = $message->getBlocks()) {
+        $payload['blocks'] = $blocks;
     }
 
     $payload['attachments'] = $this->getAttachmentsAsArrays($message);
